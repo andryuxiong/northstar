@@ -1,0 +1,11 @@
+{
+  "url": "https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?rid=88",
+  "selectedText": "Make cleanup take seconds",
+  "nodes": [
+    {"tag":"DIV","text":"Brand: CleanFast"},
+    {"tag":"H3","text":"Make cleanup take seconds"},
+    {"tag":"BUTTON","text":"Learn More"},
+    {"tag":"A","text":"Destination","href":"https://cleanfast.example/products/tool"},
+    {"tag":"IMG","src":"https://cdn.example/tiktok.jpg","width":720,"height":960}
+  ]
+}

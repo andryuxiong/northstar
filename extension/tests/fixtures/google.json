@@ -1,0 +1,12 @@
+{
+  "url": "https://adstransparency.google.com/advertiser/AR123/creative/CR456",
+  "selectedText": "A better desk in minutes",
+  "nodes": [
+    {"tag":"DIV","text":"Advertiser name"},
+    {"tag":"DIV","text":"Deskly LLC"},
+    {"tag":"H2","text":"A better desk in minutes"},
+    {"tag":"DIV","text":"Buy Now"},
+    {"tag":"A","text":"Visit advertiser","href":"https://www.google.com/url?q=https%3A%2F%2Fdeskly.example%2Fstanding-desk"},
+    {"tag":"IMG","src":"https://cdn.example/google.webp","width":1200,"height":628}
+  ]
+}

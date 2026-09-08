@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northstar Ad Capture</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header class="app-head">
+        <span class="mark">N</span>
+        <div>
+          <b>Northstar capture</b>
+          <small>Public ad evidence</small>
+        </div>
+        <span id="connection" class="connection checking">Checking</span>
+      </header>
+
+      <section class="capture-note">
+        Select the ad copy on the page before opening this extension for a cleaner
+        capture. Review every field before saving.
+      </section>
+
+      <section id="capture-preview" class="capture-preview" hidden>
+        <div>
+          <b id="adapter-name">Generic capture</b>
+          <span id="adapter-confidence" class="confidence">Low confidence</span>
+        </div>
+        <p id="captured-fields"></p>
+        <ul id="capture-warnings"></ul>
+      </section>
+
+      <form id="capture-form">
+        <div class="field-grid two">
+          <label>
+            Platform
+            <select id="platform">
+              <option value="meta">Meta</option>
+              <option value="tiktok">TikTok</option>
+              <option value="google">Google</option>
+              <option value="manual">Other</option>
+            </select>
+          </label>
+          <label>
+            Format
+            <select id="creative-type">
+              <option value="unknown">Unknown</option>
+              <option value="video">Video</option>
+              <option value="image">Image</option>
+              <option value="carousel">Carousel</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Public source URL
+          <input id="source-url" type="url" required />
+        </label>
+
+        <label>
+          Advertiser
+          <input id="advertiser" maxlength="255" placeholder="Brand or page name" />
+        </label>
+
+        <label>
+          Headline
+          <input id="headline" maxlength="500" placeholder="Visible headline" />
+        </label>
+
+        <label>
+          Ad copy / selected text
+          <textarea id="ad-text" rows="5" placeholder="Select ad copy on the page, then capture again"></textarea>
+        </label>
+
+        <div class="field-grid two">
+          <label>
+            CTA
+            <input id="cta" maxlength="255" placeholder="Shop now" />
+          </label>
+          <label>
+            Creative URL
+            <input id="creative-url" type="url" placeholder="Public media URL" />
+          </label>
+        </div>
+
+        <label>
+          Landing-page URL
+          <input id="landing-url" type="url" placeholder="https://store.example/products/..." />
+        </label>
+
+        <details class="analytics-fields">
+          <summary>Visible analytics (optional)</summary>
+          <p>Enter only values displayed by the public source. Rounded values and rankings remain text, not exact measurements.</p>
+          <div class="field-grid three">
+            <label>Impressions<input id="impressions" placeholder="10K–50K" /></label>
+            <label>Reach<input id="reach" placeholder="Top 20% or 45K" /></label>
+            <label>Likes<input id="likes" placeholder="34K" /></label>
+            <label>Comments<input id="comments" placeholder="1.2K" /></label>
+            <label>Shares<input id="shares" placeholder="850" /></label>
+            <label>CTR<input id="ctr" placeholder="Top 18%" /></label>
+          </div>
+          <label>
+            Metric geography
+            <input id="metric-geography" placeholder="US, UK, EU, Worldwide…" />
+          </label>
+        </details>
+
+        <div id="message" class="message" role="status"></div>
+
+        <footer>
+          <button id="recapture" type="button" class="secondary">Recapture page</button>
+          <button id="save" type="submit" class="primary">Save to Northstar</button>
+        </footer>
+      </form>
+
+      <p class="boundary">
+        Captures only the active public page. It does not log in, bypass controls,
+        or run in the background.
+      </p>
+    </main>
+    <script src="adapters.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

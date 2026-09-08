@@ -1,0 +1,31 @@
+# Local secrets and settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Dependencies and generated files
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.log
+*.pid
+.DS_Store
+Thumbs.db
+# Runtime databases and backups
+*.db
+*.db-*
+*.sqlite*
+*.bak
+backend/data/
+backend/tests/.data/
+# Local development notes
+AGENTS.md
+docs/SESSION_HANDOFF*.md

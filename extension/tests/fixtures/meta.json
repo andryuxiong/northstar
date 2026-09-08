@@ -1,0 +1,12 @@
+{
+  "url": "https://www.facebook.com/ads/library/?id=12345",
+  "selectedText": "Fresh smoothies anywhere\nPortable power. Easy cleanup.",
+  "nodes": [
+    {"tag":"SPAN","text":"Advertiser"},
+    {"tag":"A","text":"BlendGo","href":"https://www.facebook.com/blendgo"},
+    {"tag":"H2","text":"Fresh smoothies anywhere"},
+    {"tag":"SPAN","text":"Shop Now"},
+    {"tag":"A","text":"Shop","href":"https://l.facebook.com/l.php?u=https%3A%2F%2Fblendgo.example%2Fproducts%2Fportable"},
+    {"tag":"VIDEO","src":"https://cdn.example/meta-creative.mp4","width":640,"height":640}
+  ]
+}
