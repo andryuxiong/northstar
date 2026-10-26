@@ -9,7 +9,7 @@ Northstar does not provide private merchant analytics. A storefront scan alone c
 The supported personal setup is Windows with PowerShell. Install:
 
 - Python 3.10 or newer and make sure `python` works in PowerShell.
-- A current Node.js/npm release supported by Vite 8. The implementation was exercised with Python 3.10 and Node 25.
+- A current Node.js/npm release supported by Vite 8. Publication checks used Python 3.12 and Node.js 25.3 on Windows.
 - Internet access for public storefront scans and any provider requests.
 
 Docker is not required or recommended for the normal personal workflow. The application already uses:
@@ -26,7 +26,7 @@ You do not need PostgreSQL, Redis, Celery, or a container runtime.
 Open PowerShell and run:
 
 ```powershell
-cd C:\Users\andre\Desktop\dropship-intel-mvp
+cd C:\path\to\northstar
 .\start-northstar.ps1
 ```
 
@@ -326,7 +326,7 @@ Northstar includes an unpacked local extension under `extension/`:
 1. Start Northstar.
 2. Open `chrome://extensions` or `edge://extensions`.
 3. Enable **Developer mode** and choose **Load unpacked**.
-4. Select `C:\Users\andre\Desktop\dropship-intel-mvp\extension`.
+4. Select the `extension` folder inside your Northstar checkout, for example `C:\path\to\northstar\extension`.
 5. Pin **Northstar Public Ad Capture**.
 6. Open a public ad-library page and select the visible ad copy when possible.
 7. Open the extension, review every inferred field, and choose **Save to Northstar**.

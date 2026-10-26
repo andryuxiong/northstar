@@ -1,10 +1,37 @@
 # Northstar Commerce Intelligence
 
-Northstar is a private, single-user e-commerce and dropshipping research workspace. It scans public storefronts, optionally imports real Similarweb and Meta Ad Library data using your credentials, and builds a decision-focused Store Intelligence Report.
+Northstar is a local, single-user e-commerce and dropshipping research workspace. I built it to keep store observations, product history, saved ads, and research decisions in one place. It scans public storefronts, optionally imports Similarweb and Meta Ad Library data using your credentials, and builds a Store Intelligence Report.
 
 It runs locally on Windows and has no subscriptions, billing, teams, artificial scan credits, or monthly scan quotas. Docker, PostgreSQL, Redis, and Celery are not required.
 
 Northstar's central rule is simple: show an evidence-backed range or classification when the inputs support it; otherwise show `insufficient data`. It does not invent exact visitors, orders, sales, revenue, product performance, ad success, supplier relationships, or profit.
+
+**Stack:** React, TypeScript, Vite, FastAPI, SQLAlchemy, SQLite, and Alembic. Optional provider integrations and a Chrome/Edge capture extension sit above the local collection and reporting workflow.
+
+## Screenshots
+
+These screenshots show the running application with a fictional `fieldwork.example` catalog and illustrative, user-entered costs. They contain no personal research data, live merchant measurements, or paid provider results. The missing-data states are intentional: a product catalog alone does not establish sales or demand.
+
+### Store report
+
+![Store report showing collected catalog coverage and explicitly unavailable demand metrics](docs/images/store-report.png)
+
+<details>
+<summary>Product catalog and comparison</summary>
+
+![Sample product catalog with evidence gaps visible](docs/images/product-catalog.png)
+
+![Comparison of two sample products and their illustrative cost scenarios](docs/images/product-comparison.png)
+
+</details>
+
+## Engineering decisions
+
+- **Validate destinations throughout collection.** The crawler checks DNS results and each redirect, rejects non-public destinations, bounds decompressed responses, and throttles requests. See the [crawler](backend/app/services/crawler.py) and [security regression tests](backend/tests/test_crawler_security.py).
+- **Preserve observations before estimating.** Immutable snapshots retain what was collected. Versioned calculations identify their assumptions and withhold unsupported conclusions. See the [methodology](docs/INTELLIGENCE_METHODOLOGY.md) and [estimator tests](backend/tests/test_intelligence_estimators.py).
+- **Keep the personal workflow simple.** SQLite and a bounded in-process worker avoid requiring a database server or queue service. Jobs are not durable across restarts; that is an explicit tradeoff. See the [architecture and limitations](docs/ARCHITECTURE.md).
+
+This repository is a software project, not a validated revenue-prediction service. Provider integrations require your own access, and the local authentication model is not intended for public internet hosting.
 
 ## Get the source
 
@@ -17,6 +44,8 @@ Local databases, credentials, notification settings, logs, and installed depende
 ## Quick start
 
 From PowerShell:
+
+Install Python and Node.js/npm first. Publication checks used Python 3.12 and Node.js 25.3 on Windows; see the [requirements and setup guide](docs/USER_GUIDE.md#1-requirements).
 
 ```powershell
 cd northstar
@@ -130,6 +159,7 @@ try {
 }
 
 cd frontend
+npm ci
 npm run build
 npm audit --omit=dev
 cd ..
@@ -139,7 +169,7 @@ node --test tests\adapters.test.js
 cd ..
 ```
 
-Backend tests use `backend/tests/.data/` and do not write to the personal database. At completion of the current implementation, 65 backend tests, 4 offline extension adapter tests, and the frontend production build passed.
+Backend tests use `backend/tests/.data/` and do not write to the personal database. Publication verification passed 71 backend tests, 4 offline extension adapter tests, a clean frontend install, and the frontend production build. Browser checks of the three screenshot views reported no JavaScript page errors. Paid provider calls and a public deployment were not part of those checks.
 
 ## Safety and scope
 
